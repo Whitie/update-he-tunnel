@@ -1,0 +1,7 @@
+# /usr/lib/systemd/system/update-he-tunnel.service
+[Unit]
+Description=Checks the external IP and updates HE tunnelbroker if changed
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python /usr/bin/update-he-tunnel.py
