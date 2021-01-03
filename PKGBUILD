@@ -14,7 +14,7 @@ source=('update-he-tunnel.timer' 'update-he-tunnel.service' 'update-he-tunnel.co
 md5sums=('a9207c3ceb0939c440c45e14390bcf7e'
          '22a1d17890d6165e8b0e373d47370ce8'
          '99ca43f0a6758b573c57ac7b9a0771bf'
-         '5a02ef3792700edd8886478ef25ba23f'
+         '900395359a693857027e5e6fe4fb6826'
          '683a216c6bcd595b7b4bbc281d5d37b1'
          '6bed779dcb2ca1ef40cea7eb849479b9')
 

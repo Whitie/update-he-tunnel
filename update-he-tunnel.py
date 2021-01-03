@@ -33,14 +33,18 @@ def write_new_cache(cache_file, external_ip):
     new_cache = cache_file.parent / 'new_ip.ip'
     with new_cache.open('w') as fp:
         fp.write(external_ip)
-    cache_file.unlink()
+    if cache_file.exists():
+        cache_file.unlink()
     new_cache.rename(cache_file)
 
 
 def update_he(update_url, external_ip):
     req = requests.get(update_url)
     req.raise_for_status()
-    return ('good' in req.text and external_ip in req.text)
+    return (
+        ('good' in req.text or 'nochg' in req.text) and
+        external_ip in req.text
+    )
 
 
 def get_config():
@@ -75,7 +79,7 @@ def main():
     if cached_ip == external_ip:
         print(f'IP not changed: {cached_ip}')
         return
-    write_new_cache(config['cache_file'], config['external_ip'])
+    write_new_cache(config['cache_file'], external_ip)
     try:
         updated = update_he(config['update_url'], external_ip)
     except RequestException as error:
